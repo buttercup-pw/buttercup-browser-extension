@@ -1,0 +1,43 @@
+{
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "language": "Language",
+    "minute": "{{count}} minute",
+    "minute_plural": "{{count}} minutes",
+    "hour": "{{count}} hour",
+    "hour_plural": "{{count}} hours",
+    "day": "{{count}} day",
+    "day_plural": "{{count}} days",
+    "week": "{{count}} week",
+    "week_plural": "{{count}} weeks",
+    "off": "off",
+    "settings": "Settings",
+    "add-vault": "Add Vault",
+    "save-vault": "Save Vault",
+    "remove-vault": "Remove Vault",
+    "managing-vault": "Managing Vault",
+    "unlock-vault": "Unlock Vault",
+    "unlock-vaults": "Unlock Vaults",
+    "lock-all-vaults": "Lock All Vaults",
+    "manage-vaults": "Manage Vaults",
+    "master-password": "Master Password",
+    "vaults": "Vaults",
+    "back": "Back",
+    "search-for-entries": "Search for entries...",
+    "remove": "Remove",
+    "lock": "Lock",
+    "unlock": "Unlock",
+    "cancel": "Cancel",
+    "save": "Save",
+    "change-password": "Change Password",
+    "username": "Username",
+    "password": "Password",
+    "notification": {
+        "success": {
+            "all-vaults-have-been-locked": "Alle Tresore wurden verschlossen."
+        },
+        "confirm": {
+            "remove-vault": "Are you sure that you want to remove the vault \"{{title}}\"?"
+        }
+    }
+}

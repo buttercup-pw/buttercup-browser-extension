@@ -29,13 +29,13 @@ class SearchPage extends PureComponent {
                     </When>
                     <Otherwise>
                         <NonIdealState
-                            title="No unlocked vaults"
-                            description="No vaults are currently available or unlocked."
+                            title={this.props.t("dialog:search.no-unlocked-vaults")}
+                            description={this.props.t("dialog:search.no-vaults-are-available-or-unlocked")}
                             icon={<img src={BUTTERCUP_LOGO} width="64" />}
                             action={
                                 this.props.availableSources === 0 ? (
                                     <Button icon="unlock" onClick={::this.props.onUnlockAllArchives}>
-                                        Unlock Vaults
+                                        {this.props.t("unlock-vaults")}
                                     </Button>
                                 ) : null
                             }

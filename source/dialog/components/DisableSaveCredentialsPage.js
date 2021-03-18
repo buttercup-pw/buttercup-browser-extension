@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { push } from "react-router-redux";
 import styled from "styled-components";
 import { Button, Intent } from "@blueprintjs/core";
@@ -7,6 +7,7 @@ import InPagePopupBody from "./InPagePopupBody.js";
 import { disableLoginForDomain } from "../library/messaging.js";
 import { closeDialog, openURL } from "../library/context.js";
 import { getExtensionURL } from "../../shared/library/extension.js";
+import { useTranslation } from "react-i18next";
 
 const ActionButton = styled(Button)`
     margin-bottom: 8px;
@@ -21,12 +22,23 @@ function manageDisabledDomains() {
     openURL(getExtensionURL("setup.html#/settings/disabled-login-domains"));
 }
 
-export default function DisableSaveCredentialsPage() {
+export default function DisableSaveCredentialsPage(props) {
+    const { t } = useTranslation(["dialog", "common"]);
+
     return (
-        <InPagePopupBody title="Disable Save Prompt">
-            <ActionButton fill text="Disable for this domain" onClick={disableForDomain} intent={Intent.DANGER} />
-            <ActionButton fill text="Manage disabled domains" onClick={manageDisabledDomains} />
-            <Button fill text="Back" onClick={() => dispatch(push("/save-new-credentials"))} />
+        <InPagePopupBody title={t("save-prompt.disable.headline")}>
+            <ActionButton
+                fill
+                text={t("save-prompt.disable.for-this-domain")}
+                onClick={disableForDomain}
+                intent={Intent.DANGER}
+            />
+            <ActionButton
+                fill
+                text={t("save-prompt.disable.manage-disabled-domains")}
+                onClick={manageDisabledDomains}
+            />
+            <Button fill text={t("base:back")} onClick={() => dispatch(push("/save-new-credentials"))} />
         </InPagePopupBody>
     );
 }

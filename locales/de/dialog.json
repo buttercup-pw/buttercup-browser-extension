@@ -1,0 +1,18 @@
+{
+    "search": {
+        "no-unlocked-vaults": "No unlocked vaults",
+        "no-vaults-are-available-or-unlocked": "No vaults are currently available or unlocked."
+    },
+    "save-prompt": {
+        "save-login-details": "Login-Details speichern?",
+        "disable": {
+            "headline": "Aufforderung deaktivieren",
+            "for-this-domain": "Für diese Domain deaktivieren",
+            "manage-disabled-domains": "Daaktivierter Domains verwalten"
+        }
+    },
+    "errors": {
+        "failed-getting-last-login-details": "Letzte Anmeldedaten nicht erhalten",
+        "an-error-occurred-while-trying-to-fetch-credentials": "Beim Versuch, die Anmeldedaten abzurufen, ist ein Fehler aufgetreten:: {{error}}"
+    }
+}

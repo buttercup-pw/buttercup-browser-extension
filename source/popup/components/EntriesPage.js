@@ -20,7 +20,7 @@ export default class EntriesPage extends PureComponent {
             <Fragment>
                 <SearchInputWrapper>
                     <InputGroup
-                        placeholder="Search for entries..."
+                        placeholder={this.props.t("search-for-entries")}
                         className={Classes.FILL}
                         type="search"
                         leftIcon="search"

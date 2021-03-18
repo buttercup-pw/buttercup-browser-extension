@@ -1,0 +1,17 @@
+{
+    "name": "Name",
+    "choose-vault-type": "Wähle eine Tresorart",
+    "choose-or-create-vault": "Wähle Tresor aus oder lege eine an",
+    "current-password": "Aktuelles Passwort",
+    "password-token": "Passwort Reset-Token",
+    "new-master-password": "Neues Passwort",
+    "new-master-password-2": "Neues Passwort (bestätigen)",
+    "placeholder": {
+        "vault-password": "Tresor-Passwort eingeben...",
+        "vault-current-password": "Aktuelles Tresor-Passwort eingeben...",
+        "vault-name": "Tresor-Name eingeben...",
+        "vault-reset-token": "Passwort Reset-Token eingeben...",
+        "vault-new-password": "Neues Passwort eingeben...",
+        "vault-new-password-again": "Neues Passwort wiederholen..."
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "settings": {
+        "dark-theme": "Dark Theme",
+        "light-theme": "Light Theme",
+        "vaults-auto-unlock": {
+            "self": "Vaults Auto Unlock",
+            "helper-text": "Automatically unlock vaults when the browser starts."
+        },
+        "vaults-auto-lock": {
+            "self": "Vaults Auto Lock",
+            "helper-text": "Automatically lock vaults after the selected time."
+        },
+        "show-save-dialog": {
+            "self": "Show Save Dialog",
+            "helper-text": "Save dialog appears after submitting a form.",
+            "options": {
+                "always": "Always",
+                "unlocked": "When Vaults Unlocked",
+                "never": "Never"
+            }
+        },
+        "dynamic-entry-icons": {
+            "self": "Dynamic Entry Icons",
+            "helper-text": "Fetch entry icons from their URLs/domains using an anonymous proxy.",
+            "options": {
+                "enabled": "Enabled",
+                "disabled": "Disabled"
+            }
+        }
+    },
+    "headerbar": {
+        "about-buttercup": "About Buttercup",
+        "other-applications": "Other Applications",
+        "manage-disabled-login-prompts": "Manage Disabled Login Prompts",
+        "save-stored-logins": "Save Stored Logins"
+    },
+    "welcome": {
+        "title": "Welcome to Buttercup",
+        "description": "Use the search bar to find entries in your unlocked vaults."
+    },
+    "no-vaults": {
+        "title": "No Vaults",
+        "description": "Hmm.. There aren't any vaults yet."
+    }
+}

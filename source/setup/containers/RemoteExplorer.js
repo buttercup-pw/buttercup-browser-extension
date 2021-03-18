@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { withTranslation } from "react-i18next";
 import RemoteExplorer from "../components/RemoteExplorer.js";
 import { setDirectoryContents, setDirectoryLoading } from "../actions/remoteFiles.js";
 import { getDropboxDirectoryContents, getGoogleDriveDirectoryContents, getWebDAVClient } from "../library/remote.js";
@@ -106,21 +107,23 @@ function fetchRemoteDirectory(dispatch, directory, fetchType) {
         });
 }
 
-export default connect(
-    (state, ownProps) => ({
-        directoriesLoading: getDirectoriesLoading(state),
-        rootDirectory: contentsToTree(getAllDirectoryContents(state), ownProps.fetchType)
-    }),
-    {
-        onOpenDirectory: (directory, fetchType) => (dispatch, getState) => {
-            const state = getState();
-            const dirContents = getDirectoryContents(state, directory);
-            if (!dirContents) {
-                fetchRemoteDirectory(dispatch, directory, fetchType);
+export default withTranslation()(
+    connect(
+        (state, ownProps) => ({
+            directoriesLoading: getDirectoriesLoading(state),
+            rootDirectory: contentsToTree(getAllDirectoryContents(state), ownProps.fetchType)
+        }),
+        {
+            onOpenDirectory: (directory, fetchType) => (dispatch, getState) => {
+                const state = getState();
+                const dirContents = getDirectoryContents(state, directory);
+                if (!dirContents) {
+                    fetchRemoteDirectory(dispatch, directory, fetchType);
+                }
+            },
+            onReady: fetchType => dispatch => {
+                fetchRemoteDirectory(dispatch, "/", fetchType);
             }
-        },
-        onReady: fetchType => dispatch => {
-            fetchRemoteDirectory(dispatch, "/", fetchType);
         }
-    }
-)(RemoteExplorer);
+    )(RemoteExplorer)
+);

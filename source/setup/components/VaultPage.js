@@ -105,11 +105,11 @@ class VaultPage extends PureComponent {
         let title, action;
         switch (this.props.state) {
             case "locked":
-                title = "Unlock Vault";
+                title = this.props.t("unlock-vault");
                 action = "Unlock";
                 break;
             case "unlocked":
-                title = "Managing Vault";
+                title = this.props.t("managing-vault");
                 action = "Manage";
                 break;
             default:
@@ -124,23 +124,23 @@ class VaultPage extends PureComponent {
                     onClick={::this.handleRemoveArchive}
                     disabled={disableForm}
                 >
-                    Remove Archive
+                    {this.props.t("remove-vault")}
                 </Button>
                 <Button className="ml-auto" onClick={::this.handleCancelUnlock} disabled={disableForm}>
-                    Cancel
+                    {this.props.t("cancel")}
                 </Button>
                 <Choose>
                     <When condition={this.props.state === "locked"}>
                         <Button onClick={::this.handleUnlockArchive} disabled={disableForm}>
-                            Unlock
+                            {this.props.t("unlock")}
                         </Button>
                     </When>
                     <Otherwise>
                         <Button icon="text-highlight" onClick={::this.handlePasswordChange} disabled={disableForm}>
-                            Change Password
+                            {this.props.t("change-password")}
                         </Button>
                         <Button icon="lock" onClick={::this.handleLockArchive} disabled={disableForm}>
-                            Lock
+                            {this.props.t("lock")}
                         </Button>
                     </Otherwise>
                 </Choose>
@@ -158,11 +158,15 @@ class VaultPage extends PureComponent {
                     </If>
                     <If condition={this.props.state === "locked"}>
                         <form onSubmit={::this.handleUnlockArchive}>
-                            <FormGroup disabled={disableForm} label="Master Password" labelFor="master-password">
+                            <FormGroup
+                                disabled={disableForm}
+                                label={this.props.t("master-password")}
+                                labelFor="master-password"
+                            >
                                 <InputGroup
                                     id="master-password"
                                     type="password"
-                                    placeholder="Enter your password..."
+                                    placeholder={this.props.t("setup:placeholder.vault-password")}
                                     disabled={disableForm}
                                     large
                                     onChange={event => this.handleUpdateForm("masterPassword", event)}
@@ -176,7 +180,7 @@ class VaultPage extends PureComponent {
                 </Dialog>
                 <If condition={this.state.changingMasterPassword}>
                     <Dialog
-                        title={`Change Password: ${this.props.archiveTitle}`}
+                        title={`${this.props.t("change-password")}: ${this.props.archiveTitle}`}
                         actions={
                             <Fragment>
                                 <Button
@@ -185,7 +189,7 @@ class VaultPage extends PureComponent {
                                     }
                                     disabled={disableForm}
                                 >
-                                    Cancel
+                                    {this.props.t("cancel")}
                                 </Button>
                                 <Button
                                     intent={Intent.DANGER}
@@ -193,18 +197,22 @@ class VaultPage extends PureComponent {
                                     onClick={::this.handlePasswordChangeSubmit}
                                     disabled={disableForm || !this.passwordChangeValid}
                                 >
-                                    Change Password
+                                    {this.props.t("change-password")}
                                 </Button>
                             </Fragment>
                         }
                         zIndex={2}
                     >
                         <form onSubmit={::this.handlePasswordChangeSubmit}>
-                            <FormGroup disabled={disableForm} label="Current Password" labelFor="old-master-password">
+                            <FormGroup
+                                disabled={disableForm}
+                                label={this.props.t("setup:current-password")}
+                                labelFor="old-master-password"
+                            >
                                 <InputGroup
                                     id="old-master-password"
                                     type="password"
-                                    placeholder="Enter your current password..."
+                                    placeholder={this.props.t("setup:placeholder.vault-current-password")}
                                     disabled={disableForm}
                                     large
                                     onChange={event => this.handleUpdateForm("oldMasterPassword", event)}
@@ -213,24 +221,28 @@ class VaultPage extends PureComponent {
                             <If condition={this.props.archiveType === "mybuttercup"}>
                                 <FormGroup
                                     disabled={disableForm}
-                                    label="Password Reset Token"
+                                    label={this.props.t("setup:password-token")}
                                     labelFor="password-token"
                                 >
                                     <InputGroup
                                         id="password-token"
                                         type="text"
-                                        placeholder="Enter password reset token..."
+                                        placeholder={this.props.t("setup:placeholder.vault-reset-token")}
                                         disabled={disableForm}
                                         large
                                         onChange={event => this.handleUpdateForm("passwordToken", event)}
                                     />
                                 </FormGroup>
                             </If>
-                            <FormGroup disabled={disableForm} label="New Password" labelFor="new-master-password">
+                            <FormGroup
+                                disabled={disableForm}
+                                label={this.props.t("setup:new-master-password")}
+                                labelFor="new-master-password"
+                            >
                                 <InputGroup
                                     id="new-master-password"
                                     type="password"
-                                    placeholder="Enter new password..."
+                                    placeholder={this.props.t("setup:placeholder.vault-new-password")}
                                     disabled={disableForm}
                                     large
                                     onChange={event => this.handleUpdateForm("newMasterPassword", event)}
@@ -238,13 +250,13 @@ class VaultPage extends PureComponent {
                             </FormGroup>
                             <FormGroup
                                 disabled={disableForm}
-                                label="New Password (confirm)"
+                                label={this.props.t("setup:new-master-password-2")}
                                 labelFor="new-master-password-2"
                             >
                                 <InputGroup
                                     id="new-master-password-2"
                                     type="password"
-                                    placeholder="Enter new password again..."
+                                    placeholder={this.props.t("setup:placeholder.vault-new-password-again")}
                                     disabled={disableForm}
                                     large
                                     onChange={event => this.handleUpdateForm("newMasterPassword2", event)}

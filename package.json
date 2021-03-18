@@ -131,6 +131,8 @@
     "web-ext": "^4.3.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
-    "yoctodelay": "^1.1.0"
+    "yoctodelay": "^1.1.0",
+    "i18next": "^19.9.2",
+    "react-i18next": "^11.8.10"
   }
 }

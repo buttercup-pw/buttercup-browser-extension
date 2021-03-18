@@ -1,0 +1,43 @@
+{
+    "enabled": "Aktiviert",
+    "disabled": "Deaktiviert",
+    "language": "Sprache",
+    "minute": "{{count}} Minute",
+    "minute_plural": "{{count}} Minuten",
+    "hour": "{{count}} Stunde",
+    "hour_plural": "{{count}} stunden",
+    "day": "{{count}} Tag",
+    "day_plural": "{{count}} Tage",
+    "week": "{{count}} Woche",
+    "week_plural": "{{count}} Wochen",
+    "off": "aus",
+    "settings": "Einstellungen",
+    "add-vault": "Tresor hinzufügen",
+    "save-vault": "Tresor speichern",
+    "remove-vault": "Tresor entfernen",
+    "managing-vault": "Tresor verwalten",
+    "unlock-vault": "Tresor entsperren",
+    "unlock-vaults": "Tresore entsperren",
+    "lock-all-vaults": "Alle Tresore sperren" ,
+    "manage-vaults": "Tresore verwalten",
+    "master-password": "Haupt-Passwort",
+    "vaults": "Tresore",
+    "back": "Zurück",
+    "search-for-entries": "Nach Einträgen suchen...",
+    "remove": "Entfernen",
+    "lock": "Sperren",
+    "unlock": "Entsperren",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "change-password": "Passwort ändern",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "notification": {
+        "success": {
+            "all-vaults-have-been-locked": "All vaults have been locked."
+        },
+        "confirm": {
+            "remove-vault": "Möchtest du wirklich den Tresor \"{{title}}\" löschen?"
+        }
+    }
+}

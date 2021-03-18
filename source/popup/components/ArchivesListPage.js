@@ -103,18 +103,20 @@ class ArchivesListPage extends PureComponent {
         return (
             <Container>
                 <If condition={this.state.lockedSuccessfully}>
-                    <CalloutBar intent={Intent.SUCCESS}>All vaults have been locked.</CalloutBar>
+                    <CalloutBar intent={Intent.SUCCESS}>
+                        {this.props.t("notification.success.all-vaults-have-been-locked")}
+                    </CalloutBar>
                 </If>
                 <Choose>
                     <When condition={this.props.archives.length > 0}>{this.renderArchivesList()}</When>
                     <Otherwise>
                         <NonIdealState
-                            title="No Vaults"
-                            description="Hmm.. There aren't any vaults yet."
+                            title={this.props.t("popup:no-vaults.title")}
+                            description={this.props.t("popup:no-vaults.description")}
                             icon="offline"
                             action={
                                 <Button
-                                    text="Add Vault"
+                                    text={this.props.t("add-vault")}
                                     icon="add"
                                     intent={Intent.SUCCESS}
                                     onClick={::this.props.onAddArchiveClick}
@@ -132,17 +134,21 @@ class ArchivesListPage extends PureComponent {
             <Menu>
                 <Choose>
                     <When condition={vault.status === "unlocked"}>
-                        <MenuItem text="Lock" icon="lock" onClick={() => this.handleLockArchive(vault)} />
+                        <MenuItem
+                            text={this.props.t("lock")}
+                            icon="lock"
+                            onClick={() => this.handleLockArchive(vault)}
+                        />
                     </When>
                     <Otherwise>
                         <MenuItem
-                            text="Unlock"
+                            text={this.props.t("unlock")}
                             icon="unlock"
                             onClick={() => this.props.onArchiveClick(vault.id, vault.state)}
                         />
                     </Otherwise>
                 </Choose>
-                <MenuItem text="Remove" icon="trash" onClick={() => this.handleRemoveArchive(vault)} />
+                <MenuItem text={this.props.t("remove")} icon="trash" onClick={() => this.handleRemoveArchive(vault)} />
             </Menu>
         );
     }

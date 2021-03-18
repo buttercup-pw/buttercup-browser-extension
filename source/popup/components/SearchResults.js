@@ -44,18 +44,18 @@ class SearchResults extends PureComponent {
                     </When>
                     <Otherwise>
                         <NonIdealState
-                            title="Welcome to Buttercup"
-                            description="Use the search bar to find entries in your unlocked vaults."
+                            title={this.props.t("popup:welcome.title")}
+                            description={this.props.t("popup:welcome.description")}
                             icon={<img src={BUTTERCUP_LOGO} width="64" />}
                             action={
                                 this.props.sourcesUnlocked === 0 ? (
                                     this.props.sourcesTotal === 0 ? (
                                         <Button icon="add" onClick={::this.props.onAddVault}>
-                                            Add Vault
+                                            {this.props.t("add-vault")}
                                         </Button>
                                     ) : (
                                         <Button icon="unlock" onClick={::this.props.onUnlockAllArchives}>
-                                            Unlock Vaults
+                                            {this.props.t("unlock-vaults")}
                                         </Button>
                                     )
                                 ) : null

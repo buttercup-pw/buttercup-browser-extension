@@ -1,4 +1,5 @@
 import log from "../../shared/library/log.js";
+import i18n from "../../shared/i18n";
 
 export function copyToClipboard(text) {
     chrome.runtime.sendMessage({ type: "copy-to-clipboard", content: text });
@@ -14,7 +15,7 @@ export function getLastLogins() {
             if (Array.isArray(resp.credentials) && resp.credentials.length > 0) {
                 resolve(resp.credentials);
             } else {
-                reject(new Error("Failed getting last login details"));
+                reject(new Error(i18n.t("dialog:errors.failed-getting-last-login-details")));
             }
         });
     });
@@ -35,7 +36,11 @@ export function sendCredentialsToTab(sourceID, entryID, signIn) {
         response => {
             if (!response.ok) {
                 log.error(`Failed sending credentials to tab: ${response.error}`);
-                alert(`An error occurred while trying to fetch credentials: ${response.error}`);
+                alert(
+                    i18n.t("dialog:errors.an-error-occurred-while-trying-to-fetch-credentials", {
+                        error: response.error
+                    })
+                );
             }
         }
     );

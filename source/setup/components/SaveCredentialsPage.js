@@ -237,7 +237,7 @@ class SaveCredentialsPage extends PureComponent {
                                     value={this.state.title}
                                 />
                             </FormGroup>
-                            <FormGroup label="Username">
+                            <FormGroup label={this.props.t("username")}>
                                 <InputGroup
                                     leftIcon="user"
                                     placeholder="Enter username..."
@@ -245,7 +245,7 @@ class SaveCredentialsPage extends PureComponent {
                                     value={this.state.username}
                                 />
                             </FormGroup>
-                            <FormGroup label="Password">
+                            <FormGroup label={this.props.t("password")}>
                                 <ControlGroup>
                                     <InputGroup
                                         className={Classes.FILL}
@@ -311,7 +311,7 @@ class SaveCredentialsPage extends PureComponent {
                                     onClick={::this.handleSaveClicked}
                                     intent={Intent.PRIMARY}
                                 />
-                                <Button text="Cancel" onClick={::this.handleCancelClick} />
+                                <Button text={this.props.t("cancel")} onClick={::this.handleCancelClick} />
                             </ButtonRow>
                         </Otherwise>
                     </Choose>

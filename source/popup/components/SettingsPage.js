@@ -1,8 +1,20 @@
 import React, { PureComponent, Fragment } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
-import { InputGroup, FormGroup, Switch, HTMLSelect } from "@blueprintjs/core";
+import { FormGroup, Switch, HTMLSelect } from "@blueprintjs/core";
 import ms from "ms";
+
+import localesConfig from "../../../locales/config.json";
+
+const languageOptions = Object.keys(localesConfig.languages).reduce(
+    (before, value) => [
+        ...before,
+        {
+            value,
+            label: localesConfig.languages[value].name
+        }
+    ],
+    []
+);
 
 export default class SettingsPage extends PureComponent {
     static propTypes = {
@@ -12,6 +24,7 @@ export default class SettingsPage extends PureComponent {
 
     handleConfigChange(event, configKey) {
         const { target } = event;
+
         const { onUpdateConfigValue } = this.props;
         if (target.type === "checkbox") {
             onUpdateConfigValue(configKey, target.checked ? true : false);
@@ -21,66 +34,84 @@ export default class SettingsPage extends PureComponent {
     }
 
     render() {
-        const { config } = this.props;
+        const { config, t } = this.props;
         return (
-            <Fragment>
-                <FormGroup label="Dark Theme">
+            <Fragment key={JSON.stringify(config)}>
+                <FormGroup label={t("popup:settings.dark-theme")}>
                     <Switch
-                        label={config.darkMode ? "Enabled" : "Disabled"}
+                        label={config.darkMode ? t("enabled") : t("disabled")}
                         checked={config.darkMode}
                         onChange={event => this.handleConfigChange(event, "darkMode")}
                     />
                 </FormGroup>
-                <FormGroup label="Vaults Auto Unlock" helperText="Automatically unlock vaults when the browser starts.">
+                <FormGroup
+                    label={t("popup:settings.vaults-auto-unlock.self")}
+                    helperText={t("popup:settings.vaults-auto-unlock.helper-text")}
+                >
                     <Switch
-                        label={config.autoUnlockVaults ? "Enabled" : "Disabled"}
+                        label={config.autoUnlockVaults ? t("enabled") : t("disabled")}
                         checked={config.autoUnlockVaults}
                         onChange={event => this.handleConfigChange(event, "autoUnlockVaults")}
                     />
                 </FormGroup>
-                <FormGroup label="Vaults Auto Lock" helperText={"Automatically lock vaults after the selected time."}>
+                <FormGroup
+                    label={t("popup:settings.vaults-auto-lock.self")}
+                    helperText={t("popup:settings.vaults-auto-lock.helper-text")}
+                >
                     <HTMLSelect
+                        key={config.autoLockVaults}
                         fill
                         value={config.autoLockVaults}
                         options={[
-                            { label: "5 minutes", value: ms("5m") },
-                            { label: "10 minutes", value: ms("10m") },
-                            { label: "15 minutes", value: ms("15m") },
-                            { label: "30 minutes", value: ms("30m") },
-                            { label: "1 hour", value: ms("1h") },
-                            { label: "2 hours", value: ms("2h") },
-                            { label: "3 hours", value: ms("3h") },
-                            { label: "12 hours", value: ms("12h") },
-                            { label: "1 day", value: ms("1d") },
-                            { label: "2 days", value: ms("2d") },
-                            { label: "1 week", value: ms("1w") },
-                            { label: "off", value: "off" }
+                            { label: t("minute", { count: 5 }), value: ms("5m") },
+                            { label: t("minute", { count: 10 }), value: ms("10m") },
+                            { label: t("minute", { count: 15 }), value: ms("15m") },
+                            { label: t("minute", { count: 30 }), value: ms("30m") },
+                            { label: t("hour", { count: 1 }), value: ms("1h") },
+                            { label: t("hour", { count: 2 }), value: ms("2h") },
+                            { label: t("hour", { count: 3 }), value: ms("3h") },
+                            { label: t("hour", { count: 12 }), value: ms("12h") },
+                            { label: t("day", { count: 1 }), value: ms("1d") },
+                            { label: t("day", { count: 2 }), value: ms("2d") },
+                            { label: t("week", { count: 1 }), value: ms("1w") },
+                            { label: t("off"), value: "off" }
                         ]}
                         onChange={event => this.handleConfigChange(event, "autoLockVaults")}
                     />
                 </FormGroup>
-                <FormGroup label="Show Save Dialog" helperText="Save dialog appears after submitting a form.">
+                <FormGroup
+                    label={t("popup:settings.show-save-dialog.self")}
+                    helperText={t("popup:settings.show-save-dialog.helper-text")}
+                >
                     <HTMLSelect
                         fill
                         value={config.showSaveDialog}
                         options={[
-                            { label: "Always", value: "always" },
-                            { label: "When Vaults Unlocked", value: "unlocked" },
-                            { label: "Never", value: "never" }
+                            { label: t("popup:settings.show-save-dialog.options.always"), value: "always" },
+                            { label: t("popup:settings.show-save-dialog.options.unlocked"), value: "unlocked" },
+                            { label: t("popup:settings.show-save-dialog.options.never"), value: "never" }
                         ]}
                         onChange={event => this.handleConfigChange(event, "showSaveDialog")}
                     />
                 </FormGroup>
+                <FormGroup label={t("language")}>
+                    <HTMLSelect
+                        fill
+                        value={config.language}
+                        options={languageOptions}
+                        onChange={event => this.handleConfigChange(event, "language")}
+                    />
+                </FormGroup>
                 <FormGroup
-                    label="Dynamic Entry Icons"
-                    helperText="Fetch entry icons from their URLs/domains using an anonymous proxy."
+                    label={t("popup:settings.dynamic-entry-icons.self")}
+                    helperText={t("popup:settings.dynamic-entry-icons.helper-text")}
                 >
                     <HTMLSelect
                         fill
                         value={config.dynamicIcons}
                         options={[
-                            { label: "Enabled", value: "enabled" },
-                            { label: "Disabled", value: "disabled" }
+                            { label: t("popup:settings.dynamic-entry-icons.options.enabled"), value: "enabled" },
+                            { label: t("popup:settings.dynamic-entry-icons.options.disabled"), value: "disabled" }
                         ]}
                         onChange={event => this.handleConfigChange(event, "dynamicIcons")}
                     />

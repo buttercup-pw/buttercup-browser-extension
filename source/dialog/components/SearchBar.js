@@ -64,7 +64,7 @@ class SearchBar extends Component {
                     className={Classes.FILL}
                     type="search"
                     leftIcon="search"
-                    placeholder="Search for entries..."
+                    placeholder={this.props.t("search-for-entries")}
                     value={this.state.searchTerm}
                     onChange={::this.handleSearchTermChange}
                     inputRef={input => {

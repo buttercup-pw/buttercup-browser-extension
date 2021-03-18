@@ -53,11 +53,11 @@ class HeaderBar extends PureComponent {
     }
 
     render() {
-        const { archives, location, darkMode } = this.props;
+        const { archives, location, darkMode, t } = this.props;
         const archiveMenu = (
             <ArchiveMenu>
                 <If condition={archives.length > 0}>
-                    <MenuDivider title="Vaults:" />
+                    <MenuDivider title={`${t("vaults")}:`} />
                     <For each="vault" of={archives} index="index">
                         <If condition={!!VAULT_TYPES.find(({ type }) => type === vault.type)}>
                             <MenuItem
@@ -71,31 +71,39 @@ class HeaderBar extends PureComponent {
                     </For>
                     <MenuDivider />
                 </If>
-                <MenuItem text="Add Vault" icon="add" onClick={::this.props.onAddVaultClick} />
-                <MenuItem text="Lock All Vaults" icon="lock" onClick={::this.props.onLockAllClick} />
-                <MenuItem icon="numbered-list" text="Manage Vaults" onClick={this.props.onVaultsClick} />
+                <MenuItem text={t("add-vault")} icon="add" onClick={::this.props.onAddVaultClick} />
+                <MenuItem text={t("lock-all-vaults")} icon="lock" onClick={::this.props.onLockAllClick} />
+                <MenuItem icon="numbered-list" text={t("manage-vaults")} onClick={this.props.onVaultsClick} />
             </ArchiveMenu>
         );
         const optionsMenu = (
             <Menu>
                 <MenuItem text={`Buttercup v${version}`} icon="updated" disabled />
-                <MenuItem text="Settings" icon="cog" onClick={::this.props.onSettingsClick} />
+                <MenuItem text={t("settings")} icon="cog" onClick={::this.props.onSettingsClick} />
                 <MenuItem
-                    text={darkMode ? "Light theme" : "Dark theme"}
+                    text={darkMode ? t("popup:settings.light-theme") : t("popup:settings.dark-theme")}
                     icon={darkMode ? "flash" : "moon"}
                     onClick={::this.props.onToggleDarkMode}
                 />
                 <MenuDivider />
-                <MenuItem text="About Buttercup" icon="info-sign" onClick={::this.props.onAboutClick} />
-                <MenuItem text="Other Applications" icon="mobile-phone" onClick={::this.props.onOtherSoftwareClick} />
+                <MenuItem
+                    text={t("popup:headerbar.about-buttercup")}
+                    icon="info-sign"
+                    onClick={::this.props.onAboutClick}
+                />
+                <MenuItem
+                    text={t("popup:headerbar.other-applications")}
+                    icon="mobile-phone"
+                    onClick={::this.props.onOtherSoftwareClick}
+                />
                 <MenuDivider />
                 <MenuItem
-                    text="Manage Disabled Login Prompts"
+                    text={t("popup:headerbar.manage-disabled-login-prompts")}
                     icon="exclude-row"
                     onClick={::this.props.onManageDisabledLoginPromps}
                 />
                 <MenuItem
-                    text="Save Stored Logins"
+                    text={t("popup:headerbar.save-stored-logins")}
                     icon="saved"
                     disabled={this.props.unsavedLogins === 0}
                     labelElement={this.props.unsavedLogins > 0 ? <Tag round>{this.props.unsavedLogins}</Tag> : null}
@@ -107,14 +115,14 @@ class HeaderBar extends PureComponent {
             <Container>
                 <Choose>
                     <When condition={location.pathname !== "/"}>
-                        <Button text="Back" icon="arrow-left" onClick={::this.props.onItemsClick} />
+                        <Button text={t("back")} icon="arrow-left" onClick={::this.props.onItemsClick} />
                     </When>
                     <When condition={location.pathname === "/" && archives.length === 0}>
                         <Button icon="add" onClick={::this.props.onAddVaultClick} />
                     </When>
                     <Otherwise>
                         <Popover content={archiveMenu} position={Position.BOTTOM_LEFT}>
-                            <Button icon="shield" rightIcon="caret-down" text={"Vaults"} />
+                            <Button icon="shield" rightIcon="caret-down" text={t("vaults")} />
                         </Popover>
                     </Otherwise>
                 </Choose>

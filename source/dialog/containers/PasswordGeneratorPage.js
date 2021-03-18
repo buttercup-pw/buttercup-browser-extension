@@ -1,10 +1,12 @@
 import { connect } from "react-redux";
+import { withTranslation } from "react-i18next";
 import PasswordGeneratorPage from "../components/PasswordGeneratorPage.js";
-import { getSourcesCount } from "../../shared/selectors/searching.js";
 import { setGeneratedPassword } from "../library/messaging.js";
 
-export default connect((state, ownProps) => ({}), {
-    onSetPassword: password => () => {
-        setGeneratedPassword(password);
-    }
-})(PasswordGeneratorPage);
+export default withTranslation()(
+    connect((state, ownProps) => ({}), {
+        onSetPassword: password => () => {
+            setGeneratedPassword(password);
+        }
+    })(PasswordGeneratorPage)
+);

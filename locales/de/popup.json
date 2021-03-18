@@ -1,0 +1,45 @@
+{
+    "settings": {
+        "dark-theme": "Dunkles Design",
+        "light-theme": "Helles Design",
+        "vaults-auto-unlock": {
+            "self": "Tresore automatisch entsperren",
+            "helper-text": "Die Tresore werden beim Start des Browsers automatisch entsperrt."
+        },
+        "vaults-auto-lock": {
+            "self": "Tresore automatisch sperren",
+            "helper-text": "Tresore nach der gewählten Zeit automatisch sperren."
+        },
+        "show-save-dialog": {
+            "self": "Speichern-Dialog anzeigen",
+            "helper-text": "Der Speichern-Dialog erscheint nach dem Absenden eines Formulars.",
+            "options": {
+                "always": "Immer",
+                "unlocked": "Wenn Tresore entsperrt",
+                "never": "Niemals"
+            }
+        },
+        "dynamic-entry-icons": {
+            "self": "Dynamische Eintrags-Icons",
+            "helper-text": "Hole durch URLs/Domains eines Eintrags über einen anonymen Proxy dessen Icon.",
+            "options": {
+                "enabled": "Aktiviert",
+                "disabled": "Deaktiviert"
+            }
+        }
+    },
+    "headerbar": {
+        "about-buttercup": "Über Buttercup",
+        "other-applications": "Andere Anwendungen",
+        "manage-disabled-login-prompts": "Deaktivierte Logins verwalten",
+        "save-stored-logins": "Hinterlegte Logins speichern"
+    },
+    "welcome": {
+        "title": "Willkommen bei Buttercup",
+        "description": "Benutze die Suchleiste, um Einträge deiner entsperrten Tresore zu suchen."
+    },
+    "no-vaults": {
+        "title": "Keine Tresore",
+        "description": "Hmm.. Es gibt noch keine Tresore."
+    }
+}

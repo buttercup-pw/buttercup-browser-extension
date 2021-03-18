@@ -1,0 +1,18 @@
+{
+    "search": {
+        "no-unlocked-vaults": "No unlocked vaults",
+        "no-vaults-are-available-or-unlocked": "No vaults are currently available or unlocked."
+    },
+    "save-prompt": {
+        "save-login-details": "Save Login Details?",
+        "disable": {
+            "headline": "Disable Save Prompt",
+            "for-this-domain": "Disable for this domain",
+            "manage-disabled-domains": "Manage disabled domains"
+        }
+    },
+    "errors": {
+        "failed-getting-last-login-details": "Failed getting last login details",
+        "an-error-occurred-while-trying-to-fetch-credentials": "An error occurred while trying to fetch credentials: {{error}}"
+    }
+}

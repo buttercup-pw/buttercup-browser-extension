@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { Button, Card, Classes, ControlGroup, H4, InputGroup, Spinner } from "@blueprintjs/core";
 import classNames from "classnames";
 import LayoutMain from "./LayoutMain.js";
@@ -20,6 +21,7 @@ function isDomain(str) {
 export default function DisabledLoginDomainsPage() {
     const [domains, setDomains] = useState([]);
     const [loadingDomains, setLoadingDomains] = useState(false);
+    const { t } = useTranslation();
     const [newDomain, setNewDomain] = useState("");
     const fetchDomains = () => {
         setLoadingDomains(true);
@@ -57,7 +59,7 @@ export default function DisabledLoginDomainsPage() {
                             <thead>
                                 <tr>
                                     <th>Domain</th>
-                                    <th>Remove</th>
+                                    <th>{t("remove")}</th>
                                 </tr>
                             </thead>
                             <tbody>

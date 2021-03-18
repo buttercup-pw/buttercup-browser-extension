@@ -161,6 +161,7 @@ class AddArchivePage extends PureComponent {
     }
 
     render() {
+        const { t } = this.props;
         const isTargetingWebDAV = ["webdav", "owncloud", "nextcloud"].includes(this.props.selectedArchiveType);
         const isTargetingDropbox = this.props.selectedArchiveType === "dropbox";
         const isTargetingGoogleDrive = this.props.selectedArchiveType === "googledrive";
@@ -186,14 +187,14 @@ class AddArchivePage extends PureComponent {
         ]);
         const fetchType = fetchTypeSwitch(this.props.selectedArchiveType);
         return (
-            <LayoutMain title="Add Vault">
-                <H4>Choose Vault Type</H4>
+            <LayoutMain title={t("add-vault")}>
+                <H4>{t("setup:choose-vault-type")}</H4>
                 <ArchiveTypeChooser disabled={hasAuthenticated} />
                 <Spacer />
                 <If condition={this.props.selectedArchiveType}>
                     <Choose>
                         <When condition={hasAuthenticated}>
-                            <H4>Choose or Create Vault</H4>
+                            <H4>{t("setup:choose-or-create-vault")}</H4>
                             <SplitView>
                                 <Choose>
                                     <When condition={this.props.selectedArchiveType === "mybuttercup"}>
@@ -229,7 +230,7 @@ class AddArchivePage extends PureComponent {
     }
 
     renderArchiveNameInput() {
-        const { selectedFilename } = this.props;
+        const { selectedFilename, t } = this.props;
         const disabled = !selectedFilename;
         const onClickTypeSwitch = switchValue([
             [/webdav|owncloud|nextcloud/, ::this.handleChooseWebDAVBasedFile],
@@ -242,22 +243,22 @@ class AddArchivePage extends PureComponent {
         return (
             <Fragment>
                 <If condition={this.props.selectedArchiveType !== "mybuttercup"}>
-                    <FormGroup full label="Name" labelInfo="(required)" disabled={disabled}>
+                    <FormGroup full label={t("setup:name")} labelInfo="(required)" disabled={disabled}>
                         <InputGroup
                             leftIcon="tag"
                             disabled={disabled}
-                            placeholder="Enter vault name..."
+                            placeholder={t("setup:vault-password-name")}
                             onChange={event => this.handleUpdateForm("archiveName", event)}
                             onKeyPress={event => (event.key === "Enter" ? handleSubmit(event) : true)}
                             value={this.state.archiveName}
                         />
                     </FormGroup>
                 </If>
-                <FormGroup full label="Master Password" labelInfo="(required)" disabled={disabled}>
+                <FormGroup full label={t("master-password")} labelInfo="(required)" disabled={disabled}>
                     <InputGroup
                         leftIcon="lock"
                         disabled={disabled}
-                        placeholder="Enter vault password..."
+                        placeholder={t("setup:placeholder.vault-password")}
                         type="password"
                         onChange={event => this.handleUpdateForm("masterPassword", event)}
                         onKeyPress={event => (event.key === "Enter" ? handleSubmit(event) : true)}
@@ -265,7 +266,7 @@ class AddArchivePage extends PureComponent {
                     />
                 </FormGroup>
                 <Button fill disabled={disabled} onClick={handleSubmit}>
-                    Save Vault
+                    {t("save-vault")}
                 </Button>
             </Fragment>
         );
